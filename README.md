@@ -16,3 +16,11 @@
 - src/pages/2-2/JWTLoginWithLocalStorage.tsx
 - src/pages/2-2/AutoLogin.tsx
 - src/api/login.ts
+<<<<<<< HEAD
+=======
+
+## 과제 제출
+
+과제 2의 코드를 캡쳐하여 제출해 주시면 수업 후반부에 한 번 살펴보며 더 배울만한 지점이 있는지 살펴 볼 예정입니다.
+제출을 위한 설문 링크는 추후 별도로 안내드릴 예정입니다.
+>>>>>>> Practice 2
