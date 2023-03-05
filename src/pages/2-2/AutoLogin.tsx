@@ -7,9 +7,11 @@ const AutoLogin = () => {
   const isDataFetched = useRef(false)
 
   const getUserInfo = useCallback (async () => {
+    const userInfo = await getCurrentUserInfo()
 
-    // TODO: 유저 정보 가져오기 (getCurrentUserInfo 함수 사용)
-    // getCurrentUserInfo 함수를 이용해 유저 정보를 가져온 후, setUserInfo 함수를 이용해 userInfo 상태를 업데이트해주세요.
+    if (userInfo === null) return
+
+    setUserInfo(userInfo)
 
     isDataFetched.current = true
   }, [])
