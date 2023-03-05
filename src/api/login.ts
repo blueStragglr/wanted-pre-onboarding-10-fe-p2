@@ -1,6 +1,7 @@
 import { BASE_URL } from './const'
 import { getAccessTokenFromLocalStorage, saveAccessTokenToLocalStorage } from '../utils/accessTokenHandler'
 import { UserInfo } from '../types/user'
+import { fetchClient } from './fetchClient'
 
 type LoginResult = 'success' | 'fail'
 
@@ -74,13 +75,10 @@ export const getCurrentUserInfoWithToken = async (token: string): Promise<UserIn
 }
 
 export const getCurrentUserInfo = async (): Promise<UserInfo | null> => {
-  const userInfoRes = await fetch(`${ BASE_URL }/profile`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${ getAccessTokenFromLocalStorage() }`
-    }
-  })
+  const userInfoRes = await fetchClient(
+    `${ BASE_URL }/profile`,
+    { method: 'GET' }
+  )
 
   if (userInfoRes.ok) {
     return userInfoRes.json() as Promise<UserInfo>
