@@ -10,17 +10,18 @@ const JWTLoginWithLocalStorage = () => {
 
     const formData = new FormData(event.currentTarget)
 
-    const loginPayload = {
+    const loginResult = await login({
       username: formData.get('username') as string,
       password: formData.get('password') as string
-    }
+    })
 
-    // TODO: 로그인 연결 및 토큰 가져오기 (login 함수 사용)
-    // 로그인 실패시 함수를 종료합니다. 토큰은 login 함수 안에서 localStorage에 저장되도록 구현합니다.
+    if (loginResult === 'fail') return
 
-    // TODO: 유저 정보 가져오기 (getCurrentUserInfo 함수 사용)
-    // 유저 정보 가져오기 실패시 함수를 종료합니다.
-    // 유저 정보 가져오기 성공시, userInfo 상태를 업데이트합니다.
+    const userInfo = await getCurrentUserInfo()
+
+    if (userInfo === null) return
+
+    setUserInfo(userInfo)
   }
 
   return (<div>
