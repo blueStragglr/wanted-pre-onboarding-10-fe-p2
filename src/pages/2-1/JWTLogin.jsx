@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
-import { getCurrentUserInfoWithToken, loginWithToken } from '../../api/login'
-import { UserInfo } from '../../types/user'
+import { getCurrentUserInfoWithToken, loginWithToken } from '../../api/login.js'
 
 const JWTLogin = () => {
-  const [userInfo, setUserInfo] = useState<UserInfo | null>(null)
+  const [userInfo, setUserInfo] = useState(null)
 
-  const loginSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+  const loginSubmitHandler = async (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget)
 
     const loginPayload = {
-      username: formData.get('username') as string,
-      password: formData.get('password') as string
+      username: formData.get('username'),
+      password: formData.get('password')
     }
 
     // TODO: 로그인 연결 및 토큰 가져오기 (loginWithToken 함수 사용)

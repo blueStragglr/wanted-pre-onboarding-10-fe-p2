@@ -1,9 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { getCurrentUserInfo, login } from '../../api/login'
-import { UserInfo } from '../../types/user'
+import { getCurrentUserInfo, login } from '../../api/login.js'
 
 const AutoLogin = () => {
-  const [userInfo, setUserInfo] = useState<UserInfo | null>(null)
+  const [userInfo, setUserInfo] = useState(null)
   const isDataFetched = useRef(false)
 
   const getUserInfo = useCallback (async () => {
